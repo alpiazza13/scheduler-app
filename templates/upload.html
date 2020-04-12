@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<form method=post enctype=multipart/form-data>
+    <input type=file name=file>
+    <input type=submit value=Upload>
+</form>
+Pick a file to upload, and then your schedules will follow!
+<ol>
+{%for schedule in schedules%}
+
+    <li>{{schedule}}</li>
+{%endfor%}
+
+</ol>
+</body>
+</html>

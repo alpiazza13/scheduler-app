@@ -1,0 +1,15 @@
+from flask import Flask, request, render_template
+import pandas as pd
+import schedule
+
+app = Flask(__name__)
+
+@app.route('/upload', methods=['GET', 'POST'])
+def upload():
+    if request.method == 'POST':
+        df = pd.read_excel(request.files.get('file'))
+        return render_template('upload.html', schedules=schedule.possible_schedules(df, 3, []))
+    return render_template('upload.html')
+
+if __name__ == '__main__':
+    app.run(debug=True)
